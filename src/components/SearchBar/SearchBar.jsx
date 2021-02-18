@@ -9,7 +9,10 @@ export default class SearchBar extends Component {
                     <input
                         type="text"
                         onChange={this.props.handleInputChange}
+                        value={this.props.value}
+                        name="search"
                     />
+
                 </div>
             </div>
         )

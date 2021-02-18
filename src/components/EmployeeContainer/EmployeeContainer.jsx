@@ -17,19 +17,29 @@ class EmployeeContainer extends Component {
             this.setState({ results: response.data.results })
         })
     }
-    handleInputChange = event => {
-        this.setState({ search: event.target.value });
+    handleInputChange = e => {
+
+        const { name, value } = e.target;
+
+        this.setState({
+            [name]: value
+        });
+
+        if (this.state.search !== "") {
+
+            this.setState({ results: this.state.results.filter(employee => `${employee.name.first} ${employee.name.last}`.toUpperCase().indexOf(this.state.search.toUpperCase()) > -1) })
+        }
+
     };
 
 
     render() {
         return (
             <Container>
-                {console.log(this.state.search)}
-                <SearchBar handleInputChange={this.handleInputChange} />
+                <SearchBar handleInputChange={this.handleInputChange} value={this.state.search} />
                 <Row>
                     <Col>
-                        <Employee data={this.state.results} />
+                        <Employee data={this.state.results} search={this.state.search} />
                     </Col>
                 </Row>
             </Container>

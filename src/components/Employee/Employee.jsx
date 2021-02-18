@@ -9,6 +9,7 @@ class Employee extends Component {
             <table className="table table-striped">
                 <thead>
                     <tr>
+
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Phone</th>
@@ -18,7 +19,9 @@ class Employee extends Component {
                 </thead>
                 <tbody>
                     {
+
                         this.props.data.map(result => (
+
                             <tr>
                                 <th scope="row"><img src={result.picture.thumbnail} /></th>
                                 <td>{result.name.first} {result.name.last}</td>
